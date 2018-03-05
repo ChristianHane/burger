@@ -18,20 +18,20 @@ function makeQuery(query, values) {
 const orm = {
   /**
   * Select row(s) from a database
-  * @param {array} whatToSelect - column names in an array (or select all using *)
+  * @param {array} columns - column names in an array (or select all using *)
   * @param {string} table - name of table to select columns from
   * @example selectOne(['column1', 'column2'], 'my_table')
   * // returns data object from database response
   * @returns {object}
   */
-  selectAll: async (whatToSelect, table) => {
-    const query = `SELECT ${whatToSelect.toString()} FROM ${table}`
+  selectAll: async (columns, table) => {
+    const query = `SELECT ${columns.toString()} FROM ${table}`
 
     try {
       const data = await makeQuery(query);
       return data;
     } catch(err) {
-      console.log('orm error selectOne: ' + err);
+      throw err;
     }
   },
 
@@ -50,7 +50,7 @@ const orm = {
       const data = await makeQuery(query, [keyValObj]);
       return data;
     } catch(err) {
-      console.log('orm insertOne error: ' + err);
+      throw err;
     }
   },
 
@@ -71,7 +71,7 @@ const orm = {
       const data = await makeQuery(query, values);
       return data;
     } catch(err) {
-      console.log('orm updateOne error: ' + err)
+      throw err;
     }
   }
 }

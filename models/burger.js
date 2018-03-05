@@ -5,24 +5,24 @@ const burger = {
     try {
       const data = await orm.selectAll(['*'], 'burgers');
       return data;
-    } catch(e) {
-      console.log('burger.selectAll error: ' + e);
+    } catch(err) {
+      throw err;
     }
   },
   insert: async (burgerName) => {
     try {
       const data = await orm.insertOne('burgers', {burger_name: burgerName, devoured: false});
       return data;
-    } catch(e) {
-      console.log('burger.insert error: ' + e);
+    } catch(err) {
+      throw err
     }
   },
   devoured: async (id) => {
     try {
       const data = await orm.updateOne('burgers', {devoured: true}, {id});
       return data;
-    } catch (e) {
-      console.log('burger.devoured error: ' + e);
+    } catch (err) {
+      throw err;
     }
   }
 }

@@ -1,6 +1,6 @@
 const express = require('express');
-const apiBurgerController = require('../controllers/api_burgers_controller.js');
-const landingController = require('../controllers/landing_controller.js');
+const apiBurgerController = require('../controllers/apiBurgersController.js');
+const landingController = require('../controllers/landingController.js');
 
 const router = express.Router();
 
